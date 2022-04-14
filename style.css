@@ -1,0 +1,61 @@
+
+
+#content {
+    align-items: center;
+    text-align: center;
+    display: none;
+}
+
+.container {
+    display: inline-grid;
+    background-color: white;
+    border: 2px solid black;
+    width: 400px;
+    height: 400px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .cell {
+    display: inline-grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    background-color: white;
+    border: 2px solid black;
+    width: auto;
+    height: auto;
+    align-items: center;
+    font-size: 70px;
+    font-family: 'Rubik Moonrocks', cursive;
+  }
+
+  /*Start game page*/
+
+  #gameStart {
+      text-align: center;
+  }
+
+  .ml9 {
+    position: relative;
+    font-weight: 200;
+    font-size: 4em;
+  }
+  
+  .ml9 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+  }
+  
+  .ml9 .letter {
+    transform-origin: 50% 100%;
+    display: inline-block;
+    line-height: 1em;
+  } 
+
+  .letters {
+    font-family: 'Rubik Moonrocks', cursive;
+  }
