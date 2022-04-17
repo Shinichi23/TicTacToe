@@ -14,6 +14,8 @@
     height: 400px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    margin-top: 70px;
+    border: none;
   }
 
   .cell {
@@ -61,5 +63,35 @@
   }
 
   #winner {
+    font-family: 'Rubik Moonrocks', cursive;
+    font-size: larger;
+    align-items: center;
+    text-align: center;
     display: none;
+    margin-top: 50px;
+  }
+
+  #tieGame {
+    font-family: 'Rubik Moonrocks', cursive;
+    font-size: larger;
+    align-items: center;
+    text-align: center;
+    display: none;
+    margin-top: 50px;
+  }
+
+  .top{
+    border-top: none;
+  }
+
+  .left {
+    border-left: none;
+  }
+
+  .right {
+    border-right: none
+  }
+
+  .bottom {
+    border-bottom: none
   }

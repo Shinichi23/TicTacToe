@@ -12,13 +12,6 @@ cells.forEach((cell) => {
   cell.addEventListener("click", cellClick, { once: true });
 });
 
-/* 
-const gameBoard = (() => {
-  let board = ["", "", "", "", "", "", "", "", ""];
-  return { board };
-})();
-*/
-
 let winCombo = [
   ["1", "2", "3"],
   ["4", "5", "6"],
@@ -61,13 +54,17 @@ function cellClick(e) {
 // game play
 
 function checkWinner() {
+  let tieCombo = [].concat.apply([], winCombo);
+
   for (let i = 0; i < winCombo.length; i++) {
     if (winCombo[i].every((value) => play1.includes(value)) === true) {
-      console.log(winCombo[i].every((value) => play1.includes(value)));
       displayWinner();
     } else if (winCombo[i].every((value) => play2.includes(value)) === true) {
-      console.log(winCombo[i].every((value) => play2.includes(value)));
       displayWinner();
+    } else if (
+      tieCombo.every((value) => play1.concat(play2).includes(value)) === true
+    ) {
+      noWinner();
     }
   }
 }
@@ -75,18 +72,23 @@ function checkWinner() {
 // Restart Game
 
 const restart = document.getElementById("restart");
-const reset = document.getElementById("reset");
+const restartTie = document.getElementById("restartGame");
 
 function restartGame() {
   window.location.reload(true);
 }
 
 restart.addEventListener("click", restartGame);
-reset.addEventListener("click", restartGame);
+restartTie.addEventListener("click", restartGame);
 
 function displayWinner() {
   document.getElementById("content").style.display = "none";
   document.getElementById("winner").style.display = "block";
+}
+
+function noWinner() {
+  document.getElementById("content").style.display = "none";
+  document.getElementById("tieGame").style.display = "block";
 }
 
 // Start game style
