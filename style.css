@@ -59,3 +59,7 @@
   .letters {
     font-family: 'Rubik Moonrocks', cursive;
   }
+
+  #winner {
+    display: none;
+  }

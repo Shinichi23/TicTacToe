@@ -12,10 +12,23 @@ cells.forEach((cell) => {
   cell.addEventListener("click", cellClick, { once: true });
 });
 
+/* 
 const gameBoard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
   return { board };
 })();
+*/
+
+let winCombo = [
+  ["1", "2", "3"],
+  ["4", "5", "6"],
+  ["7", "8", "9"],
+  ["1", "4", "7"],
+  ["2", "5", "8"],
+  ["3", "6", "9"],
+  ["1", "5", "9"],
+  ["3", "5", "7"],
+];
 
 let Player = (name, symbol) => {
   return { name, symbol };
@@ -23,6 +36,8 @@ let Player = (name, symbol) => {
 
 let playerOne = Player("Player 1", "X");
 let playerTwo = Player("Player 2", "O");
+let play1 = [];
+let play2 = [];
 
 var turnCount = 0;
 
@@ -34,25 +49,45 @@ function cellClick(e) {
   }
   if (turnCount % 2 == 0) {
     document.getElementById(`${e.target.id}`).innerHTML = playerTwo.symbol;
+    play2.push(e.target.id);
   } else {
     document.getElementById(`${e.target.id}`).innerHTML = playerOne.symbol;
+    play1.push(e.target.id);
   }
 
-  console.log(e.target.id);
-  console.log(turnCount);
+  checkWinner();
+}
+
+// game play
+
+function checkWinner() {
+  for (let i = 0; i < winCombo.length; i++) {
+    if (winCombo[i].every((value) => play1.includes(value)) === true) {
+      console.log(winCombo[i].every((value) => play1.includes(value)));
+      displayWinner();
+    } else if (winCombo[i].every((value) => play2.includes(value)) === true) {
+      console.log(winCombo[i].every((value) => play2.includes(value)));
+      displayWinner();
+    }
+  }
 }
 
 // Restart Game
 
-/* const restart = document.getElementById("restart");
+const restart = document.getElementById("restart");
+const reset = document.getElementById("reset");
 
 function restartGame() {
-  cells.forEach((cell) => {
-    cell.innerHTML = "";
-  });
+  window.location.reload(true);
 }
 
-restart.addEventListener("click", restartGame); */
+restart.addEventListener("click", restartGame);
+reset.addEventListener("click", restartGame);
+
+function displayWinner() {
+  document.getElementById("content").style.display = "none";
+  document.getElementById("winner").style.display = "block";
+}
 
 // Start game style
 
